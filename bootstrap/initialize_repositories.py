@@ -75,9 +75,18 @@ def gh(*args: str) -> object:
     return json.loads(output) if output else None
 
 
+def ensure_workflow_ref_is_durable(sha: str) -> None:
+    if not re.fullmatch(r"[0-9a-f]{40}", sha):
+        raise ValueError("--workflow-ref must be an immutable 40-character commit SHA")
+    comparison = gh("api", f"repos/{ORG}/.github/compare/{sha}...main")
+    if comparison.get("status") not in {"ahead", "identical"} or comparison.get("merge_base_commit", {}).get("sha") != sha:
+        raise RuntimeError("Reusable workflow SHA must be retained in the default branch history, not an unmerged or squash-discarded branch")
+
+
 def preflight(repos: list[str], sha: str) -> None:
     if not re.fullmatch(r"[0-9a-f]{40}", sha):
         raise ValueError("--workflow-ref must be an immutable 40-character commit SHA")
+    ensure_workflow_ref_is_durable(sha)
     source_commit = gh("api", f"repos/{ORG}/.github/commits/{sha}")
     if source_commit["sha"] != sha:
         raise RuntimeError("Common policy commit SHA mismatch")

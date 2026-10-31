@@ -32,7 +32,7 @@ APIは`swift build` / `swift test`とPostgreSQL 18統合テスト、Webはlockfi
 
 Secrets、トークン、個人情報、実顧客データをコード・ログ・Issue・PRに残さない。認証情報の値を出力しない。施設IDは信頼できるセッションと権限から検証し、全読み書きで施設境界を守る。金額は通貨と最小単位の整数で扱い、クライアントの価格を信頼しない。予約はDBトランザクション・制約・競合テストで過剰予約を防ぐ。Stripe webhookは署名と冪等性を検証し、決済成功をブラウザの戻り値で確定しない。
 
-Google APIは最小scopeを使い、Domain-wide delegation・組織全体の権限・課金リソース・本番デプロイは明示承認を得る。OpenTelemetryにPII・認証情報を含めない。Workflowは最小permissions、外部Actionsは完全なcommit SHA固定、checkoutの資格情報を永続化しない。PRの未信頼コードを`pull_request_target`で実行しない。
+Google APIは最小scopeを使い、Domain-wide delegation・組織全体の権限・課金リソース・本番デプロイは明示承認を得る。OpenTelemetryにPII・認証情報を含めない。Workflowは最小permissions、外部Actionsは完全なcommit SHA固定。共通Reusable WorkflowのSHAはdefault branch履歴上に保持されたcommitを使い、未merge branchのSHAを使わない。checkoutの資格情報を永続化しない。PRの未信頼コードを`pull_request_target`で実行しない。
 
 ## MCP・Skills
 
@@ -45,3 +45,12 @@ Google APIは最小scopeを使い、Domain-wide delegation・組織全体の権�
 PRには関連Issue、何が変わるか、実行したチェックと結果、独立Review/Security Reviewの結果、既知の制限を記録する。required checksをskipで満たしたように装わない。Releasesはテスト済みcommitと変更点を持ち、Environmentsは開発・検証・本番の承認境界を分ける。Packagesは配布の必要が生じたときだけ使う。
 
 重要な設計変更は`sauna-docs`のADRに背景・決定・代替案・影響を残し、Wikiに索引を反映する。繰り返すバグや重要なレビュー指摘は必要に応じてこの規則と各repoのAGENTS.mdを更新する。共通規則の更新は他repoへの追従PRを作り、適用元のcommitを明示する。
+## GitHub Codexレビューとマージ条件
+
+1. PRの自動Codexレビューを確認する。指摘ごとに根拠を確認し、必要なコード修正・回帰テストを行う。
+2. 各レビューthreadに、修正内容・commit・検証結果を返信する。対応不要と判断した場合も理由を説明し、未解決事項を隠さない。
+3. 対応後にPRへ正確に `@codex review` とコメントし、新しいレビューを依頼する。最新commitに対するレビュー結果を待つ。
+4. 新しい指摘があれば同じ処理を繰り返す。GitHubのCodexが指摘なしと示し、未対応の指摘がなく、必須CIが成功した後だけマージする。
+5. レビュー未着・連携未設定・利用上限・実行失敗は指摘なしと見なさない。原因と依頼URLを記録し、PRを開いたままにする。独立ローカルReview Agentの合格でこの条件を代替しない。
+
+このGitHub上のレビューは、実装中の独立Review Agent並行起動と実ビルド・テストに追加する確認である。レビュー依頼だけで成功扱いにしない。自動返信・同じ依頼の連投を避け、レビューroundと対象commitをPRへ記録する。

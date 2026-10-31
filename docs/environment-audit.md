@@ -38,3 +38,15 @@
 - https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/
 
 Wiki cloneは未初期化のためRepository not found。GitHub Wiki有効化とwiki git repository初期化は別。docs/wikiにレビュー可能な原稿を準備し、GitHub UI初期化後に同期する。
+
+## 完了状態の補足
+
+全9repoは最新ユーザー明示によりpublic。初期構築9PRは独立Review/Security ReviewとCI成功確認後にmerge済み。その後ユーザーからGitHub上の自動Codex指摘対応・返信・@codex review反復・指摘ゼロ確認を今後のmerge条件に追加する指示を受領した。全9既存PRを実APIで検査した時点でCodex reviews/commentsは0。MCPのGitHub連携一覧にsauna-studioがなく、コメント書込は403のためCLIで.github#9にレビュー依頼済み。未着を指摘ゼロと扱わない。
+
+Rulesetsは全9repoでactive、PRと実在するCI contextを必須、bypassなし、mainのforce push/delete禁止。唯一ownerのためrequired approving reviewsは0。Codex GitHubレビュー条件はAGENTSとPR運用で追加し、機械的に実装したrequired status checkとは区別する。
+
+Wiki原稿は準備済み、Wiki機能有効。Wiki git repositoryは未初期化。BrowserはGitHub未ログイン、MCPにWiki初期化機能がないため最初のページ公開は未実施。Environmentsはdevelopment/staging/productionを作成したがbranch policyのみで、本番承認gate・deployment・Secrets設定は未実施。
+
+横断グラフの実API照合が完了: planning Issue94件、blocked-by180本、parent/subissue87本、全94件のProject membershipを確認。ProjectのSub-issue自動追加がenabledであるため一覧index反映前の重複応答が発生した。Issue.projectItemsを参照する同期で復旧した。途中のネットワークエラーは隠さず停止し、冪等再実行で補完した。
+
+共通Workflowは初期075c669をsquash後に解決できないCI実障害を確認。追補PRではdefault branch履歴上の84222ffへcallerを修正し実Actionsを再検証。初期化scriptにmain祖先検査と4回帰テストを追加した。新しいCodexレビュー条件に従い、追補PRとMVP PRは外部レビュー未着の間はopenとする。

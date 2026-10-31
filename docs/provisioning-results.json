@@ -1,0 +1,877 @@
+{
+  "organization": "sauna-studio",
+  "project": {
+    "id": "PVT_kwDOFObP6s4BpmXl",
+    "number": 1,
+    "url": "https://github.com/orgs/sauna-studio/projects/1",
+    "title": "Sauna Studio — MVP",
+    "visibility": "private"
+  },
+  "settings": {
+    ".github": {
+      "vulnerability-alerts": "enabled",
+      "automated-security-fixes": "enabled",
+      "private-vulnerability-reporting": "enabled",
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "enabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      }
+    },
+    "sauna-api": {
+      "vulnerability-alerts": "enabled",
+      "automated-security-fixes": "enabled",
+      "private-vulnerability-reporting": "enabled",
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "enabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      }
+    },
+    "sauna-app": {
+      "vulnerability-alerts": "enabled",
+      "automated-security-fixes": "enabled",
+      "private-vulnerability-reporting": "enabled",
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "enabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      }
+    },
+    "sauna-web": {
+      "vulnerability-alerts": "enabled",
+      "automated-security-fixes": "enabled",
+      "private-vulnerability-reporting": "enabled",
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "enabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      }
+    },
+    "sauna-admin-app": {
+      "vulnerability-alerts": "enabled",
+      "automated-security-fixes": "enabled",
+      "private-vulnerability-reporting": "enabled",
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "enabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      }
+    },
+    "sauna-admin-web": {
+      "vulnerability-alerts": "enabled",
+      "automated-security-fixes": "enabled",
+      "private-vulnerability-reporting": "enabled",
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "enabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      }
+    },
+    "sauna-infrastructure": {
+      "vulnerability-alerts": "enabled",
+      "automated-security-fixes": "enabled",
+      "private-vulnerability-reporting": "enabled",
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "enabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      }
+    },
+    "sauna-automation": {
+      "vulnerability-alerts": "enabled",
+      "automated-security-fixes": "enabled",
+      "private-vulnerability-reporting": "enabled",
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "enabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      }
+    },
+    "sauna-docs": {
+      "vulnerability-alerts": "enabled",
+      "automated-security-fixes": "enabled",
+      "private-vulnerability-reporting": "enabled",
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "enabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      }
+    }
+  },
+  "issues": {
+    "EPIC-001": {
+      "repo": ".github",
+      "number": 1,
+      "id": 6136389571,
+      "url": "https://github.com/sauna-studio/.github/issues/1",
+      "node_id": "I_kwDOVeEsUs8AAAABbcHfww"
+    },
+    "EPIC-002": {
+      "repo": "sauna-api",
+      "number": 1,
+      "id": 6136389717,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/1",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHgVQ"
+    },
+    "EPIC-003": {
+      "repo": "sauna-api",
+      "number": 2,
+      "id": 6136389871,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/2",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHg7w"
+    },
+    "EPIC-004": {
+      "repo": "sauna-web",
+      "number": 1,
+      "id": 6136390077,
+      "url": "https://github.com/sauna-studio/sauna-web/issues/1",
+      "node_id": "I_kwDOVeOFjs8AAAABbcHhvQ"
+    },
+    "EPIC-005": {
+      "repo": "sauna-infrastructure",
+      "number": 1,
+      "id": 6136390196,
+      "url": "https://github.com/sauna-studio/sauna-infrastructure/issues/1",
+      "node_id": "I_kwDOVeOGVc8AAAABbcHiNA"
+    },
+    "EPIC-006": {
+      "repo": "sauna-automation",
+      "number": 1,
+      "id": 6136390304,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/1",
+      "node_id": "I_kwDOVeOGlM8AAAABbcHioA"
+    },
+    "EPIC-007": {
+      "repo": "sauna-api",
+      "number": 3,
+      "id": 6136390402,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/3",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHjAg"
+    },
+    "FOUND-001": {
+      "repo": ".github",
+      "number": 2,
+      "id": 6136390521,
+      "url": "https://github.com/sauna-studio/.github/issues/2",
+      "node_id": "I_kwDOVeEsUs8AAAABbcHjeQ"
+    },
+    "FOUND-002": {
+      "repo": ".github",
+      "number": 3,
+      "id": 6136390636,
+      "url": "https://github.com/sauna-studio/.github/issues/3",
+      "node_id": "I_kwDOVeEsUs8AAAABbcHj7A"
+    },
+    "FOUND-003": {
+      "repo": ".github",
+      "number": 4,
+      "id": 6136390782,
+      "url": "https://github.com/sauna-studio/.github/issues/4",
+      "node_id": "I_kwDOVeEsUs8AAAABbcHkfg"
+    },
+    "FOUND-004": {
+      "repo": ".github",
+      "number": 5,
+      "id": 6136390931,
+      "url": "https://github.com/sauna-studio/.github/issues/5",
+      "node_id": "I_kwDOVeEsUs8AAAABbcHlEw"
+    },
+    "FOUND-005": {
+      "repo": ".github",
+      "number": 6,
+      "id": 6136391030,
+      "url": "https://github.com/sauna-studio/.github/issues/6",
+      "node_id": "I_kwDOVeEsUs8AAAABbcHldg"
+    },
+    "FOUND-006": {
+      "repo": "sauna-docs",
+      "number": 1,
+      "id": 6136391171,
+      "url": "https://github.com/sauna-studio/sauna-docs/issues/1",
+      "node_id": "I_kwDOVeOG3M8AAAABbcHmAw"
+    },
+    "FOUND-007": {
+      "repo": ".github",
+      "number": 7,
+      "id": 6136391299,
+      "url": "https://github.com/sauna-studio/.github/issues/7",
+      "node_id": "I_kwDOVeEsUs8AAAABbcHmgw"
+    },
+    "FOUND-008": {
+      "repo": ".github",
+      "number": 8,
+      "id": 6136391441,
+      "url": "https://github.com/sauna-studio/.github/issues/8",
+      "node_id": "I_kwDOVeEsUs8AAAABbcHnEQ"
+    },
+    "INTEGRATION-001": {
+      "repo": "sauna-automation",
+      "number": 2,
+      "id": 6136391588,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/2",
+      "node_id": "I_kwDOVeOGlM8AAAABbcHnpA"
+    },
+    "INTEGRATION-002": {
+      "repo": "sauna-automation",
+      "number": 3,
+      "id": 6136391713,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/3",
+      "node_id": "I_kwDOVeOGlM8AAAABbcHoIQ"
+    },
+    "INTEGRATION-003": {
+      "repo": "sauna-api",
+      "number": 4,
+      "id": 6136391834,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/4",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHomg"
+    },
+    "INTEGRATION-004": {
+      "repo": "sauna-automation",
+      "number": 4,
+      "id": 6136392007,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/4",
+      "node_id": "I_kwDOVeOGlM8AAAABbcHpRw"
+    },
+    "INTEGRATION-005": {
+      "repo": "sauna-automation",
+      "number": 5,
+      "id": 6136392111,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/5",
+      "node_id": "I_kwDOVeOGlM8AAAABbcHprw"
+    },
+    "INTEGRATION-006": {
+      "repo": "sauna-automation",
+      "number": 6,
+      "id": 6136392296,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/6",
+      "node_id": "I_kwDOVeOGlM8AAAABbcHqaA"
+    },
+    "INTEGRATION-007": {
+      "repo": "sauna-automation",
+      "number": 7,
+      "id": 6136392439,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/7",
+      "node_id": "I_kwDOVeOGlM8AAAABbcHq9w"
+    },
+    "MVP-001": {
+      "repo": "sauna-api",
+      "number": 5,
+      "id": 6136392540,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/5",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHrXA"
+    },
+    "MVP-002": {
+      "repo": "sauna-api",
+      "number": 6,
+      "id": 6136392666,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/6",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHr2g"
+    },
+    "MVP-003": {
+      "repo": "sauna-api",
+      "number": 7,
+      "id": 6136392755,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/7",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHsMw"
+    },
+    "MVP-004": {
+      "repo": "sauna-api",
+      "number": 8,
+      "id": 6136392857,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/8",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHsmQ"
+    },
+    "MVP-005": {
+      "repo": "sauna-api",
+      "number": 9,
+      "id": 6136393051,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/9",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHtWw"
+    },
+    "MVP-006": {
+      "repo": "sauna-api",
+      "number": 10,
+      "id": 6136393160,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/10",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHtyA"
+    },
+    "MVP-007": {
+      "repo": "sauna-api",
+      "number": 11,
+      "id": 6136393297,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/11",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHuUQ"
+    },
+    "MVP-008": {
+      "repo": "sauna-api",
+      "number": 12,
+      "id": 6136393423,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/12",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHuzw"
+    },
+    "MVP-009": {
+      "repo": "sauna-api",
+      "number": 13,
+      "id": 6136393626,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/13",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHvmg"
+    },
+    "MVP-010": {
+      "repo": "sauna-api",
+      "number": 14,
+      "id": 6136393723,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/14",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHv-w"
+    },
+    "MVP-011": {
+      "repo": "sauna-api",
+      "number": 15,
+      "id": 6136393827,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/15",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHwYw"
+    },
+    "MVP-012": {
+      "repo": "sauna-api",
+      "number": 16,
+      "id": 6136393941,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/16",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHw1Q"
+    },
+    "MVP-013": {
+      "repo": "sauna-api",
+      "number": 17,
+      "id": 6136394077,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/17",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHxXQ"
+    },
+    "MVP-014": {
+      "repo": "sauna-api",
+      "number": 18,
+      "id": 6136394231,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/18",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHx9w"
+    },
+    "MVP-015": {
+      "repo": "sauna-api",
+      "number": 19,
+      "id": 6136394340,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/19",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHyZA"
+    },
+    "MVP-016": {
+      "repo": "sauna-api",
+      "number": 20,
+      "id": 6136394440,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/20",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHyyA"
+    },
+    "MVP-017": {
+      "repo": "sauna-api",
+      "number": 21,
+      "id": 6136394538,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/21",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHzKg"
+    },
+    "MVP-018": {
+      "repo": "sauna-api",
+      "number": 22,
+      "id": 6136394702,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/22",
+      "node_id": "I_kwDOVeOFFc8AAAABbcHzzg"
+    },
+    "MVP-019": {
+      "repo": "sauna-api",
+      "number": 23,
+      "id": 6136394848,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/23",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH0YA"
+    },
+    "MVP-020": {
+      "repo": "sauna-api",
+      "number": 24,
+      "id": 6136394938,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/24",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH0ug"
+    },
+    "MVP-021": {
+      "repo": "sauna-api",
+      "number": 25,
+      "id": 6136395041,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/25",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH1IQ"
+    },
+    "MVP-022": {
+      "repo": "sauna-api",
+      "number": 26,
+      "id": 6136395126,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/26",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH1dg"
+    },
+    "MVP-023": {
+      "repo": "sauna-api",
+      "number": 27,
+      "id": 6136395333,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/27",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH2RQ"
+    },
+    "MVP-024": {
+      "repo": "sauna-api",
+      "number": 28,
+      "id": 6136395438,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/28",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH2rg"
+    },
+    "MVP-025": {
+      "repo": "sauna-api",
+      "number": 29,
+      "id": 6136395554,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/29",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH3Ig"
+    },
+    "MVP-026": {
+      "repo": "sauna-api",
+      "number": 30,
+      "id": 6136395660,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/30",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH3jA"
+    },
+    "MVP-027": {
+      "repo": "sauna-api",
+      "number": 31,
+      "id": 6136395847,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/31",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH4Rw"
+    },
+    "MVP-028": {
+      "repo": "sauna-api",
+      "number": 32,
+      "id": 6136395956,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/32",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH4tA"
+    },
+    "MVP-029": {
+      "repo": "sauna-api",
+      "number": 33,
+      "id": 6136396076,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/33",
+      "node_id": "I_kwDOVeOFFc8AAAABbcH5LA"
+    },
+    "MVP-030": {
+      "repo": "sauna-web",
+      "number": 2,
+      "id": 6136396191,
+      "url": "https://github.com/sauna-studio/sauna-web/issues/2",
+      "node_id": "I_kwDOVeOFjs8AAAABbcH5nw"
+    },
+    "MVP-031": {
+      "repo": "sauna-web",
+      "number": 3,
+      "id": 6136396336,
+      "url": "https://github.com/sauna-studio/sauna-web/issues/3",
+      "node_id": "I_kwDOVeOFjs8AAAABbcH6MA"
+    },
+    "MVP-032": {
+      "repo": "sauna-web",
+      "number": 4,
+      "id": 6136396482,
+      "url": "https://github.com/sauna-studio/sauna-web/issues/4",
+      "node_id": "I_kwDOVeOFjs8AAAABbcH6wg"
+    },
+    "MVP-033": {
+      "repo": "sauna-web",
+      "number": 5,
+      "id": 6136396582,
+      "url": "https://github.com/sauna-studio/sauna-web/issues/5",
+      "node_id": "I_kwDOVeOFjs8AAAABbcH7Jg"
+    },
+    "MVP-034": {
+      "repo": "sauna-web",
+      "number": 6,
+      "id": 6136396693,
+      "url": "https://github.com/sauna-studio/sauna-web/issues/6",
+      "node_id": "I_kwDOVeOFjs8AAAABbcH7lQ"
+    },
+    "MVP-035": {
+      "repo": "sauna-admin-web",
+      "number": 1,
+      "id": 6136396820,
+      "url": "https://github.com/sauna-studio/sauna-admin-web/issues/1",
+      "node_id": "I_kwDOVeOGAM8AAAABbcH8FA"
+    },
+    "MVP-036": {
+      "repo": "sauna-admin-web",
+      "number": 2,
+      "id": 6136396984,
+      "url": "https://github.com/sauna-studio/sauna-admin-web/issues/2",
+      "node_id": "I_kwDOVeOGAM8AAAABbcH8uA"
+    },
+    "MVP-037": {
+      "repo": "sauna-app",
+      "number": 1,
+      "id": 6136397156,
+      "url": "https://github.com/sauna-studio/sauna-app/issues/1",
+      "node_id": "I_kwDOVeOFS88AAAABbcH9ZA"
+    },
+    "MVP-038": {
+      "repo": "sauna-app",
+      "number": 2,
+      "id": 6136397286,
+      "url": "https://github.com/sauna-studio/sauna-app/issues/2",
+      "node_id": "I_kwDOVeOFS88AAAABbcH95g"
+    },
+    "MVP-039": {
+      "repo": "sauna-app",
+      "number": 3,
+      "id": 6136397433,
+      "url": "https://github.com/sauna-studio/sauna-app/issues/3",
+      "node_id": "I_kwDOVeOFS88AAAABbcH-eQ"
+    },
+    "MVP-040": {
+      "repo": "sauna-admin-app",
+      "number": 1,
+      "id": 6136397615,
+      "url": "https://github.com/sauna-studio/sauna-admin-app/issues/1",
+      "node_id": "I_kwDOVeOFv88AAAABbcH_Lw"
+    },
+    "MVP-041": {
+      "repo": "sauna-infrastructure",
+      "number": 2,
+      "id": 6136397729,
+      "url": "https://github.com/sauna-studio/sauna-infrastructure/issues/2",
+      "node_id": "I_kwDOVeOGVc8AAAABbcH_oQ"
+    },
+    "MVP-042": {
+      "repo": "sauna-api",
+      "number": 34,
+      "id": 6136397829,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/34",
+      "node_id": "I_kwDOVeOFFc8AAAABbcIABQ"
+    },
+    "MVP-043": {
+      "repo": "sauna-infrastructure",
+      "number": 3,
+      "id": 6136397976,
+      "url": "https://github.com/sauna-studio/sauna-infrastructure/issues/3",
+      "node_id": "I_kwDOVeOGVc8AAAABbcIAmA"
+    },
+    "MVP-044": {
+      "repo": "sauna-infrastructure",
+      "number": 4,
+      "id": 6136398165,
+      "url": "https://github.com/sauna-studio/sauna-infrastructure/issues/4",
+      "node_id": "I_kwDOVeOGVc8AAAABbcIBVQ"
+    },
+    "MVP-045": {
+      "repo": "sauna-api",
+      "number": 35,
+      "id": 6136398249,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/35",
+      "node_id": "I_kwDOVeOFFc8AAAABbcIBqQ"
+    },
+    "MVP-046": {
+      "repo": "sauna-docs",
+      "number": 2,
+      "id": 6136398364,
+      "url": "https://github.com/sauna-studio/sauna-docs/issues/2",
+      "node_id": "I_kwDOVeOG3M8AAAABbcICHA"
+    },
+    "MVP-047": {
+      "repo": "sauna-api",
+      "number": 36,
+      "id": 6136398453,
+      "url": "https://github.com/sauna-studio/sauna-api/issues/36",
+      "node_id": "I_kwDOVeOFFc8AAAABbcICdQ"
+    },
+    "MVP-048": {
+      "repo": "sauna-docs",
+      "number": 3,
+      "id": 6136398616,
+      "url": "https://github.com/sauna-studio/sauna-docs/issues/3",
+      "node_id": "I_kwDOVeOG3M8AAAABbcIDGA"
+    },
+    "MVP-049": {
+      "repo": "sauna-web",
+      "number": 7,
+      "id": 6136398733,
+      "url": "https://github.com/sauna-studio/sauna-web/issues/7",
+      "node_id": "I_kwDOVeOFjs8AAAABbcIDjQ"
+    },
+    "MVP-050": {
+      "repo": "sauna-docs",
+      "number": 4,
+      "id": 6136398895,
+      "url": "https://github.com/sauna-studio/sauna-docs/issues/4",
+      "node_id": "I_kwDOVeOG3M8AAAABbcIELw"
+    },
+    "INTEGRATION-008": {
+      "repo": "sauna-automation",
+      "number": 8,
+      "id": 6136420022,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/8",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJWtg"
+    },
+    "INTEGRATION-009": {
+      "repo": "sauna-automation",
+      "number": 9,
+      "id": 6136420116,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/9",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJXFA"
+    },
+    "INTEGRATION-010": {
+      "repo": "sauna-automation",
+      "number": 10,
+      "id": 6136420244,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/10",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJXlA"
+    },
+    "INTEGRATION-011": {
+      "repo": "sauna-automation",
+      "number": 11,
+      "id": 6136420350,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/11",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJX_g"
+    },
+    "INTEGRATION-012": {
+      "repo": "sauna-automation",
+      "number": 12,
+      "id": 6136420565,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/12",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJY1Q"
+    },
+    "INTEGRATION-013": {
+      "repo": "sauna-automation",
+      "number": 13,
+      "id": 6136420679,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/13",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJZRw"
+    },
+    "INTEGRATION-014": {
+      "repo": "sauna-automation",
+      "number": 14,
+      "id": 6136420771,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/14",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJZow"
+    },
+    "INTEGRATION-015": {
+      "repo": "sauna-automation",
+      "number": 15,
+      "id": 6136420917,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/15",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJaNQ"
+    },
+    "INTEGRATION-016": {
+      "repo": "sauna-automation",
+      "number": 16,
+      "id": 6136421058,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/16",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJawg"
+    },
+    "INTEGRATION-017": {
+      "repo": "sauna-automation",
+      "number": 17,
+      "id": 6136421175,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/17",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJbNw"
+    },
+    "INTEGRATION-018": {
+      "repo": "sauna-automation",
+      "number": 18,
+      "id": 6136421303,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/18",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJbtw"
+    },
+    "INTEGRATION-019": {
+      "repo": "sauna-automation",
+      "number": 19,
+      "id": 6136421463,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/19",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJcVw"
+    },
+    "INTEGRATION-020": {
+      "repo": "sauna-automation",
+      "number": 20,
+      "id": 6136421575,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/20",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJcxw"
+    },
+    "INTEGRATION-021": {
+      "repo": "sauna-automation",
+      "number": 21,
+      "id": 6136421653,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/21",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJdFQ"
+    },
+    "INTEGRATION-022": {
+      "repo": "sauna-automation",
+      "number": 22,
+      "id": 6136421755,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/22",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJdew"
+    },
+    "INTEGRATION-023": {
+      "repo": "sauna-automation",
+      "number": 23,
+      "id": 6136421937,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/23",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJeMQ"
+    },
+    "INTEGRATION-024": {
+      "repo": "sauna-automation",
+      "number": 24,
+      "id": 6136422103,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/24",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJe1w"
+    },
+    "INTEGRATION-025": {
+      "repo": "sauna-automation",
+      "number": 25,
+      "id": 6136422209,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/25",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJfQQ"
+    },
+    "INTEGRATION-026": {
+      "repo": "sauna-automation",
+      "number": 26,
+      "id": 6136422305,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/26",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJfoQ"
+    },
+    "INTEGRATION-027": {
+      "repo": "sauna-automation",
+      "number": 27,
+      "id": 6136422394,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/27",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJf-g"
+    },
+    "INTEGRATION-028": {
+      "repo": "sauna-automation",
+      "number": 28,
+      "id": 6136422590,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/28",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJgvg"
+    },
+    "INTEGRATION-029": {
+      "repo": "sauna-automation",
+      "number": 29,
+      "id": 6136422762,
+      "url": "https://github.com/sauna-studio/sauna-automation/issues/29",
+      "node_id": "I_kwDOVeOGlM8AAAABbcJhag"
+    }
+  },
+  "relationships_complete": true,
+  "graph_verified": {
+    "planning_issues": 94,
+    "blocking_edges": 180,
+    "parent_edges": 87
+  },
+  "visibility": "public"
+}
