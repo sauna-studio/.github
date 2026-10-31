@@ -6,3 +6,4 @@
 - [ADR-0004 意匠とOS](https://github.com/sauna-studio/.github/blob/main/docs/adr/0004-design-and-platforms.md)
 
 ADRを変更したPRではこの索引とsauna-docsへの導線も更新する。初期PRのmerge後、ブランチリンクをmainへ更新する。
+- [ADR-0005 GitHub CodexレビューとWorkflow参照](https://github.com/sauna-studio/.github/blob/main/docs/adr/0005-review-and-workflow-references.md)

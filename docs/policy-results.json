@@ -1,0 +1,223 @@
+{
+  "source_commit": "e24383d0f9fe6784293e1b781edffd08750f0a20",
+  "branch": "codex/github-codex-review-policy",
+  "repositories": [
+    {
+      "repo": "sauna-admin-app",
+      "pr_url": "https://github.com/sauna-studio/sauna-admin-app/pull/3",
+      "pr_number": 3,
+      "head": "ee4043243b67b67fe8c77b5b1b095fcea3d8da7c",
+      "checks": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214833116,
+          "event": "pull_request",
+          "headSha": "ee4043243b67b67fe8c77b5b1b095fcea3d8da7c",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-admin-app/actions/runs/41214833116"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214828362,
+          "event": "push",
+          "headSha": "ee4043243b67b67fe8c77b5b1b095fcea3d8da7c",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-admin-app/actions/runs/41214828362"
+        }
+      ],
+      "independent_review": "passed",
+      "github_codex_review": "pending; root requests review",
+      "merged": false
+    },
+    {
+      "repo": "sauna-admin-web",
+      "pr_url": "https://github.com/sauna-studio/sauna-admin-web/pull/4",
+      "pr_number": 4,
+      "head": "e30a7dc16f38532bffe890d516dc74d470a0be38",
+      "checks": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214837542,
+          "event": "pull_request",
+          "headSha": "e30a7dc16f38532bffe890d516dc74d470a0be38",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-admin-web/actions/runs/41214837542"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214833903,
+          "event": "push",
+          "headSha": "e30a7dc16f38532bffe890d516dc74d470a0be38",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-admin-web/actions/runs/41214833903"
+        }
+      ],
+      "independent_review": "passed",
+      "github_codex_review": "pending; root requests review",
+      "merged": false
+    },
+    {
+      "repo": "sauna-api",
+      "pr_url": "https://github.com/sauna-studio/sauna-api/pull/40",
+      "pr_number": 40,
+      "head": "4c6cdbc3849aac3a54de85a1de0eae44f48ea5ab",
+      "checks": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214842825,
+          "event": "pull_request",
+          "headSha": "4c6cdbc3849aac3a54de85a1de0eae44f48ea5ab",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-api/actions/runs/41214842825"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214838939,
+          "event": "push",
+          "headSha": "4c6cdbc3849aac3a54de85a1de0eae44f48ea5ab",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-api/actions/runs/41214838939"
+        }
+      ],
+      "independent_review": "passed",
+      "github_codex_review": "pending; root requests review",
+      "merged": false
+    },
+    {
+      "repo": "sauna-app",
+      "pr_url": "https://github.com/sauna-studio/sauna-app/pull/5",
+      "pr_number": 5,
+      "head": "24477621b780474f774cbbfd9f4151822dbe9ab5",
+      "checks": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214849463,
+          "event": "pull_request",
+          "headSha": "24477621b780474f774cbbfd9f4151822dbe9ab5",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-app/actions/runs/41214849463"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214844012,
+          "event": "push",
+          "headSha": "24477621b780474f774cbbfd9f4151822dbe9ab5",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-app/actions/runs/41214844012"
+        }
+      ],
+      "independent_review": "passed",
+      "github_codex_review": "pending; root requests review",
+      "merged": false
+    },
+    {
+      "repo": "sauna-automation",
+      "pr_url": "https://github.com/sauna-studio/sauna-automation/pull/31",
+      "pr_number": 31,
+      "head": "248449ce234e041579dd49bc5785c5e4c7292af8",
+      "checks": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214854183,
+          "event": "pull_request",
+          "headSha": "248449ce234e041579dd49bc5785c5e4c7292af8",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-automation/actions/runs/41214854183"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214849957,
+          "event": "push",
+          "headSha": "248449ce234e041579dd49bc5785c5e4c7292af8",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-automation/actions/runs/41214849957"
+        }
+      ],
+      "independent_review": "passed",
+      "github_codex_review": "pending; root requests review",
+      "merged": false
+    },
+    {
+      "repo": "sauna-docs",
+      "pr_url": "https://github.com/sauna-studio/sauna-docs/pull/6",
+      "pr_number": 6,
+      "head": "8f055fe6b35c02bb900f02f4041435feaa7702e0",
+      "checks": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214859045,
+          "event": "pull_request",
+          "headSha": "8f055fe6b35c02bb900f02f4041435feaa7702e0",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-docs/actions/runs/41214859045"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214855218,
+          "event": "push",
+          "headSha": "8f055fe6b35c02bb900f02f4041435feaa7702e0",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-docs/actions/runs/41214855218"
+        }
+      ],
+      "independent_review": "passed",
+      "github_codex_review": "pending; root requests review",
+      "merged": false
+    },
+    {
+      "repo": "sauna-infrastructure",
+      "pr_url": "https://github.com/sauna-studio/sauna-infrastructure/pull/6",
+      "pr_number": 6,
+      "head": "6540a4c8b8415ee03fd279212965b2f98f3495bc",
+      "checks": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214863583,
+          "event": "pull_request",
+          "headSha": "6540a4c8b8415ee03fd279212965b2f98f3495bc",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-infrastructure/actions/runs/41214863583"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214859993,
+          "event": "push",
+          "headSha": "6540a4c8b8415ee03fd279212965b2f98f3495bc",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-infrastructure/actions/runs/41214859993"
+        }
+      ],
+      "independent_review": "passed",
+      "github_codex_review": "pending; root requests review",
+      "merged": false
+    },
+    {
+      "repo": "sauna-web",
+      "pr_url": "https://github.com/sauna-studio/sauna-web/pull/9",
+      "pr_number": 9,
+      "head": "65ee00e2d680911eecb495557f91d9837c18ea23",
+      "checks": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214868124,
+          "event": "pull_request",
+          "headSha": "65ee00e2d680911eecb495557f91d9837c18ea23",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-web/actions/runs/41214868124"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214865231,
+          "event": "push",
+          "headSha": "65ee00e2d680911eecb495557f91d9837c18ea23",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-web/actions/runs/41214865231"
+        }
+      ],
+      "independent_review": "passed",
+      "github_codex_review": "pending; root requests review",
+      "merged": false
+    }
+  ],
+  "workflow_commit": "84222ff551e9b6e9bab6ba4f29fe3ddb990b37cb"
+}

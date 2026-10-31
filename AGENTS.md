@@ -32,7 +32,7 @@ APIは`swift build` / `swift test`とPostgreSQL 18統合テスト、Webはlockfi
 
 Secrets、トークン、個人情報、実顧客データをコード・ログ・Issue・PRに残さない。認証情報の値を出力しない。施設IDは信頼できるセッションと権限から検証し、全読み書きで施設境界を守る。金額は通貨と最小単位の整数で扱い、クライアントの価格を信頼しない。予約はDBトランザクション・制約・競合テストで過剰予約を防ぐ。Stripe webhookは署名と冪等性を検証し、決済成功をブラウザの戻り値で確定しない。
 
-Google APIは最小scopeを使い、Domain-wide delegation・組織全体の権限・課金リソース・本番デプロイは明示承認を得る。OpenTelemetryにPII・認証情報を含めない。Workflowは最小permissions、外部Actionsは完全なcommit SHA固定、checkoutの資格情報を永続化しない。PRの未信頼コードを`pull_request_target`で実行しない。
+Google APIは最小scopeを使い、Domain-wide delegation・組織全体の権限・課金リソース・本番デプロイは明示承認を得る。OpenTelemetryにPII・認証情報を含めない。Workflowは最小permissions、外部Actionsは完全なcommit SHA固定。共通Reusable WorkflowのSHAはdefault branch履歴上に保持されたcommitを使い、未merge branchのSHAを使わない。checkoutの資格情報を永続化しない。PRの未信頼コードを`pull_request_target`で実行しない。
 
 ## MCP・Skills
 
