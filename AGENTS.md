@@ -26,7 +26,7 @@ API: Swift 6 / Hummingbird / PostgreSQL 18 / PostgresNIO / Atlas / OpenAPI / Swi
 
 APIは`swift build` / `swift test`とPostgreSQL 18統合テスト、Webはlockfileによるinstall・型検査・単体テスト・production build・必要なPlaywright検証、Appleは対象Xcodeでbuild/testと必要なSimulator動作確認、Terraformはfmt / init -backend=false / validateを実行する。コード未配置の基盤PRは構造検査だけを実行し、アプリ検証済みと記録しない。
 
-このリポジトリの検証は`python scripts/validate_repository.py`（`scripts/validation-requirements.txt`を使用）と`actionlint`。Reusable Workflowsは呼出先の実コード・lockfile・テストが存在してから有効化する。
+`.github`リポジトリで共通基盤を変更するときの検証は`python scripts/validate_repository.py`（Python 3.11以上、`scripts/validation-requirements.txt`を使用）と`actionlint`。他のリポジトリでは末尾の固有指針とREADMEにある実在する検証手順を使う。Reusable Workflowsは呼出先の実コード・lockfile・テストが存在してから有効化する。
 
 ## セキュリティ
 

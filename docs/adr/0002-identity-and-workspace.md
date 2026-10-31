@@ -11,7 +11,9 @@ OAuth scopesはChat / Calendar / Directory / Groups / Driveの必要最小単位
 
 Google Cloud Swiftクライアントの生成対象はCloud APIであり、Workspace APIのクライアント提供を意味しない。WorkspaceごとにDiscovery/REST、OAuth、pagination、quota、retry、admin権限の対応表を作る。対応していると推測して依存を追加しない。
 
-Google Chat Botはsauna-automationに置き、GoogleChatApp (zunda-pixel/GoogleChatApp と個人Project9) には変更を加えない。Chat要求の認証・署名/issuer/audience、再送、API権限を検証する。sauna-mcpも同じAPIと認可を利用し、DB直接更新や破壊操作の自動承認をしない。
+Calendar同期はoutboxと冪等event mappingによる一方向投影から始め、Google側の編集で予約在庫を変えない。社員の停止・退職・Group変更は再検証しセッション失効と監査に反映する。
+
+Google Chat Botはsauna-automationに置き、GoogleChatApp (zunda-pixel/GoogleChatApp と個人Project9) には変更を加えない。Chat要求の認証・署名/issuer/audience、再送、API権限を検証する。Bot/MCPは初期read-onlyとし、返金・取消・閉鎖などは管理画面で新鮮なPasskey承認を得る。sauna-mcpはMCP Swift SDK、Streamable HTTP、OAuth2.1互換を前提とする。sauna-mcpも同じAPIと認可を利用し、DB直接更新や破壊操作の自動承認をしない。
 
 ## References
 - https://github.com/googleapis/google-cloud-swift

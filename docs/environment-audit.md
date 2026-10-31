@@ -11,6 +11,9 @@
 - Safari MCP実行ファイル /usr/bin/safarimcp を確認しhelp実行。現在セッションでは未接続。safarimcp stdio用設定はアプリ開発時に追加し、Safariの自動操作許可を勝手に有効化しない。
 - skill-installerの公式helperでAvdLee/SwiftUI-Agent-Skillのskills/swiftui-expert-skillをユーザー領域に導入。次ターンから利用可能。まだSwiftUI実装には使っていない。
 
+- 構造検証はHomebrew Python3.14の一時venvで実施。macOS標準Python3.9はtomllibを持たないため本validatorの要件(Python3.11+)を満たさない。
+- 追加資料3件を全読し、.githubのみpublic/他8repo privateという資料中の案(後続ユーザー明示で全publicに変更)、計画ID体系、schema.sql正本/forward-only、hosted Checkout、天候閉鎖、read-only Bot/MCPを追加確認。資料原本は個人のDownloadsパスを含むためコミットしない。
+
 ## 未導入・未接続
 
 - TablePro MCP: このセッションのツールとして利用不可、DB接続先も未作成。実DBテストは未実施。

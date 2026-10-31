@@ -47,10 +47,10 @@ def pages(path):
 
 def project(state):
     projects = gh('project', 'list', '--owner', ORG, '--format', 'json', '--limit', '100')['projects']
-    matches = [p for p in projects if p['title'] == 'Sauna Studio Development']
+    matches = [p for p in projects if p['title'] == 'Sauna Studio — MVP']
     if len(matches) > 1:
         raise RuntimeError('Ambiguous existing project')
-    p = matches[0] if matches else gh('project', 'create', '--owner', ORG, '--title', 'Sauna Studio Development', '--format', 'json')
+    p = matches[0] if matches else gh('project', 'create', '--owner', ORG, '--title', 'Sauna Studio — MVP', '--format', 'json')
     n = str(p['number'])
     state['project'] = {k: p[k] for k in ('id', 'number', 'url')}
     save(state)
