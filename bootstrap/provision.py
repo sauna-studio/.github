@@ -111,7 +111,7 @@ def validate_backlog(backlog):
 def issues(state):
     backlog = json.loads((ROOT / 'bootstrap/backlog.json').read_text())['issues']
     validate_backlog(backlog)
-    created = set()
+    created = {}
     state.setdefault('issues', {})
     existing = {repo: pages(f'repos/{ORG}/{repo}/issues?state=all') for repo in REPOS}
     for item in backlog:
@@ -126,7 +126,7 @@ def issues(state):
         if matches and marker not in (matches[0].get('body') or ''):
             raise RuntimeError('Title-only match requires manual reconciliation: ' + item['key'])
         if not matches:
-            created.add(item['key'])
+            created[item['key']] = issue_body(item, state)
         i = matches[0] if matches else api(f'repos/{ORG}/{repo}/issues', 'POST', {
             'title': f'[{item["key"]}] {item["title"]}', 'body': issue_body(item, state)})
         state['issues'][item['key']] = {'repo': repo, 'number': i['number'], 'id': i['id'], 'url': i['html_url'], 'node_id': i['node_id']}
@@ -137,7 +137,29 @@ def issues(state):
         if item['key'] not in created:
             continue
         i = state['issues'][item['key']]
-        api(f'repos/{ORG}/{i["repo"]}/issues/{i["number"]}', 'PATCH', {'body': issue_body(item, state)})
+        path = f'repos/{ORG}/{i["repo"]}/issues/{i["number"]}'
+        if api(path)['body'] != created[item['key']]:
+            print('Preserved concurrent issue edit:', item['key'], flush=True)
+            continue
+        api(path, 'PATCH', {'body': issue_body(item, state)})
+
+
+def project_item(number, url, cache):
+    if url in cache:
+        return cache[url]
+    try:
+        result = gh('project', 'item-add', number, '--owner', ORG, '--url', url, '--format', 'json')
+    except RuntimeError as error:
+        if 'Content already exists' not in str(error):
+            raise
+        # GitHub can commit an add before returning a retry/duplicate response.
+        items = gh('project', 'item-list', number, '--owner', ORG, '--limit', '1000', '--format', 'json')['items']
+        cache.update({i['content']['url']: i for i in items if i.get('content', {}).get('url')})
+        if url not in cache:
+            raise
+        return cache[url]
+    cache[url] = result
+    return result
 
 
 def relationships(state):
@@ -150,24 +172,35 @@ def relationships(state):
             raise ValueError('Unsafe issue state: ' + item['key'])
     n = str(state['project']['number'])
     fields = gh('project', 'field-list', n, '--owner', ORG, '--format', 'json', '--limit', '100')['fields']
+    project_items = gh('project', 'item-list', n, '--owner', ORG, '--limit', '1000', '--format', 'json')['items']
+    project_cache = {i['content']['url']: i for i in project_items if i.get('content', {}).get('url')}
+    parent_cache = {}
     for item in backlog:
         i = state['issues'][item['key']]
         path = f'repos/{ORG}/{i["repo"]}/issues/{i["number"]}'
+        known = pages(path + '/dependencies/blocked_by') if item['dependencies'] else []
         for dep in item['dependencies']:
             target = state['issues'][dep]
-            known = pages(path + '/dependencies/blocked_by')
             if target['id'] not in [d['id'] for d in known]:
                 api(path + '/dependencies/blocked_by', 'POST', {'issue_id': target['id']})
         if item.get('parent'):
             p = state['issues'][item['parent']]
             parent_path = f'repos/{ORG}/{p["repo"]}/issues/{p["number"]}/sub_issues'
-            if i['id'] not in [s['id'] for s in pages(parent_path)]:
+            if parent_path not in parent_cache:
+                parent_cache[parent_path] = {s['id'] for s in pages(parent_path)}
+            if i['id'] not in parent_cache[parent_path]:
                 api(parent_path, 'POST', {'sub_issue_id': i['id']})
-        pi = gh('project', 'item-add', n, '--owner', ORG, '--url', i['url'], '--format', 'json')
-        for field_name, value in [('Phase', item['phase']), ('Area', item['area']), ('Priority', 'P1' if item['key'].startswith('MVP') else 'P0')]:
+                parent_cache[parent_path].add(i['id'])
+        pi = project_item(n, i['url'], project_cache)
+        mutations = []
+        for idx, (field_name, value) in enumerate([('Phase', item['phase']), ('Area', item['area']), ('Priority', 'P1' if item['key'].startswith('MVP') else 'P0')]):
             f = next(f for f in fields if f['name'] == field_name)
             opt = next(o for o in f['options'] if o['name'] == value)
-            gh('project', 'item-edit', '--id', pi['id'], '--project-id', state['project']['id'], '--field-id', f['id'], '--single-select-option-id', opt['id'])
+            inp = 'projectId:%s,itemId:%s,fieldId:%s,value:{singleSelectOptionId:%s}' % tuple(json.dumps(v) for v in [state['project']['id'], pi['id'], f['id'], opt['id']])
+            mutations.append(f'f{idx}:updateProjectV2ItemFieldValue(input:{{{inp}}}){{projectV2Item{{id}}}}')
+        result = gh('api', 'graphql', '-f', 'query=mutation{' + ' '.join(mutations) + '}')
+        if result.get('errors'):
+            raise RuntimeError(result['errors'])
         print('linked', item['key'], flush=True)
     state['relationships_complete'] = True
     save(state)
