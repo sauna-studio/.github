@@ -38,3 +38,11 @@
 - https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/
 
 Wiki cloneは未初期化のためRepository not found。GitHub Wiki有効化とwiki git repository初期化は別。docs/wikiにレビュー可能な原稿を準備し、GitHub UI初期化後に同期する。
+
+## 完了状態の補足
+
+全9repoは最新ユーザー明示によりpublic。初期構築9PRは独立Review/Security ReviewとCI成功確認後にmerge済み。その後ユーザーからGitHub上の自動Codex指摘対応・返信・@codex review反復・指摘ゼロ確認を今後のmerge条件に追加する指示を受領した。全9既存PRを実APIで検査した時点でCodex reviews/commentsは0。MCPのGitHub連携一覧にsauna-studioがなく、コメント書込は403のためCLIで.github#9にレビュー依頼済み。未着を指摘ゼロと扱わない。
+
+Rulesetsは全9repoでactive、PRと実在するCI contextを必須、bypassなし、mainのforce push/delete禁止。唯一ownerのためrequired approving reviewsは0。Codex GitHubレビュー条件はAGENTSとPR運用で追加し、機械的に実装したrequired status checkとは区別する。
+
+Wiki原稿は準備済み、Wiki機能有効。Wiki git repositoryは未初期化。BrowserはGitHub未ログイン、MCPにWiki初期化機能がないため最初のページ公開は未実施。Environmentsはdevelopment/staging/productionを作成したがbranch policyのみで、本番承認gate・deployment・Secrets設定は未実施。

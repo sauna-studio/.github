@@ -1,0 +1,206 @@
+{
+  "organization": "sauna-studio",
+  "repositories": {
+    "sauna-api": {
+      "url": "https://github.com/sauna-studio/sauna-api",
+      "branch": "codex/repository-foundation",
+      "commit": "84b4003d62b45906f0cb56fa7b72573900821eef",
+      "pr_url": "https://github.com/sauna-studio/sauna-api/pull/37",
+      "validation": "Local generation and review passed; GitHub Actions push and pull_request runs succeeded.",
+      "actions": [
+        {
+          "conclusion": "success",
+          "databaseId": 41213975551,
+          "event": "pull_request",
+          "headSha": "84b4003d62b45906f0cb56fa7b72573900821eef",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-api/actions/runs/41213975551"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41213974135,
+          "event": "push",
+          "headSha": "84b4003d62b45906f0cb56fa7b72573900821eef",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-api/actions/runs/41213974135"
+        }
+      ]
+    },
+    "sauna-app": {
+      "url": "https://github.com/sauna-studio/sauna-app",
+      "branch": "codex/repository-foundation",
+      "commit": "f50716a7cd8f4d83f22bca11a971638c33977004",
+      "pr_url": "https://github.com/sauna-studio/sauna-app/pull/4",
+      "validation": "Local generation and review passed; GitHub Actions push and pull_request runs succeeded.",
+      "actions": [
+        {
+          "conclusion": "success",
+          "databaseId": 41213983260,
+          "event": "pull_request",
+          "headSha": "f50716a7cd8f4d83f22bca11a971638c33977004",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-app/actions/runs/41213983260"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41213981691,
+          "event": "push",
+          "headSha": "f50716a7cd8f4d83f22bca11a971638c33977004",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-app/actions/runs/41213981691"
+        }
+      ]
+    },
+    "sauna-web": {
+      "url": "https://github.com/sauna-studio/sauna-web",
+      "branch": "codex/repository-foundation",
+      "commit": "80b1e7802a1424b3805141cdc8eb34b8a5bab7e1",
+      "pr_url": "https://github.com/sauna-studio/sauna-web/pull/8",
+      "validation": "Local generation and review passed; GitHub Actions push and pull_request runs succeeded.",
+      "actions": [
+        {
+          "conclusion": "success",
+          "databaseId": 41213991068,
+          "event": "pull_request",
+          "headSha": "80b1e7802a1424b3805141cdc8eb34b8a5bab7e1",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-web/actions/runs/41213991068"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41213989070,
+          "event": "push",
+          "headSha": "80b1e7802a1424b3805141cdc8eb34b8a5bab7e1",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-web/actions/runs/41213989070"
+        }
+      ]
+    },
+    "sauna-admin-app": {
+      "url": "https://github.com/sauna-studio/sauna-admin-app",
+      "branch": "codex/repository-foundation",
+      "commit": "a00097799d1ad2188dcfac051cc08711e5a76f0b",
+      "pr_url": "https://github.com/sauna-studio/sauna-admin-app/pull/2",
+      "validation": "Local generation and review passed; GitHub Actions push and pull_request runs succeeded.",
+      "actions": [
+        {
+          "conclusion": "success",
+          "databaseId": 41213998449,
+          "event": "pull_request",
+          "headSha": "a00097799d1ad2188dcfac051cc08711e5a76f0b",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-admin-app/actions/runs/41213998449"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41213996462,
+          "event": "push",
+          "headSha": "a00097799d1ad2188dcfac051cc08711e5a76f0b",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-admin-app/actions/runs/41213996462"
+        }
+      ]
+    },
+    "sauna-admin-web": {
+      "url": "https://github.com/sauna-studio/sauna-admin-web",
+      "branch": "codex/repository-foundation",
+      "commit": "81c6c56b716e300eee1bcf3f36f952a5f0e90b8e",
+      "pr_url": "https://github.com/sauna-studio/sauna-admin-web/pull/3",
+      "validation": "Local generation and review passed; GitHub Actions push and pull_request runs succeeded.",
+      "actions": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214005565,
+          "event": "pull_request",
+          "headSha": "81c6c56b716e300eee1bcf3f36f952a5f0e90b8e",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-admin-web/actions/runs/41214005565"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214004834,
+          "event": "push",
+          "headSha": "81c6c56b716e300eee1bcf3f36f952a5f0e90b8e",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-admin-web/actions/runs/41214004834"
+        }
+      ]
+    },
+    "sauna-infrastructure": {
+      "url": "https://github.com/sauna-studio/sauna-infrastructure",
+      "branch": "codex/repository-foundation",
+      "commit": "12831a65c8e0f35542f8f8cf77998de23aace789",
+      "pr_url": "https://github.com/sauna-studio/sauna-infrastructure/pull/5",
+      "validation": "Local generation and review passed; GitHub Actions push and pull_request runs succeeded.",
+      "actions": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214014669,
+          "event": "pull_request",
+          "headSha": "12831a65c8e0f35542f8f8cf77998de23aace789",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-infrastructure/actions/runs/41214014669"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214012004,
+          "event": "push",
+          "headSha": "12831a65c8e0f35542f8f8cf77998de23aace789",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-infrastructure/actions/runs/41214012004"
+        }
+      ]
+    },
+    "sauna-automation": {
+      "url": "https://github.com/sauna-studio/sauna-automation",
+      "branch": "codex/repository-foundation",
+      "commit": "5dd054f859addb99116774f10e77661992249dc0",
+      "pr_url": "https://github.com/sauna-studio/sauna-automation/pull/30",
+      "validation": "Local generation and review passed; GitHub Actions push and pull_request runs succeeded.",
+      "actions": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214022855,
+          "event": "pull_request",
+          "headSha": "5dd054f859addb99116774f10e77661992249dc0",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-automation/actions/runs/41214022855"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214019590,
+          "event": "push",
+          "headSha": "5dd054f859addb99116774f10e77661992249dc0",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-automation/actions/runs/41214019590"
+        }
+      ]
+    },
+    "sauna-docs": {
+      "url": "https://github.com/sauna-studio/sauna-docs",
+      "branch": "codex/repository-foundation",
+      "commit": "0393b6b483108a0d10e43d54c4f7fbb6d85d703f",
+      "pr_url": "https://github.com/sauna-studio/sauna-docs/pull/5",
+      "validation": "Release closure synchronized; all 86 prerequisite plan IDs reachable; Markdown links valid; independent re-review PASS; latest push and pull_request Actions succeeded.",
+      "actions": [
+        {
+          "conclusion": "success",
+          "databaseId": 41214125138,
+          "event": "pull_request",
+          "headSha": "0393b6b483108a0d10e43d54c4f7fbb6d85d703f",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-docs/actions/runs/41214125138"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 41214120903,
+          "event": "push",
+          "headSha": "0393b6b483108a0d10e43d54c4f7fbb6d85d703f",
+          "status": "completed",
+          "url": "https://github.com/sauna-studio/sauna-docs/actions/runs/41214120903"
+        }
+      ]
+    }
+  },
+  "common_policy_sha": "075c6695309d28baad2dc1391d7d3821b81142cc"
+}

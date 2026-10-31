@@ -1,0 +1,101 @@
+[
+  {
+    "repository": ".github",
+    "url": "https://github.com/sauna-studio/.github",
+    "rulesets": [
+      {
+        "id": 26275632,
+        "name": "Main PR and verified CI",
+        "enforcement": "active"
+      }
+    ]
+  },
+  {
+    "repository": "sauna-api",
+    "url": "https://github.com/sauna-studio/sauna-api",
+    "rulesets": [
+      {
+        "id": 26275677,
+        "name": "Main PR and verified CI",
+        "enforcement": "active"
+      }
+    ]
+  },
+  {
+    "repository": "sauna-app",
+    "url": "https://github.com/sauna-studio/sauna-app",
+    "rulesets": [
+      {
+        "id": 26275678,
+        "name": "Main PR and verified CI",
+        "enforcement": "active"
+      }
+    ]
+  },
+  {
+    "repository": "sauna-web",
+    "url": "https://github.com/sauna-studio/sauna-web",
+    "rulesets": [
+      {
+        "id": 26275679,
+        "name": "Main PR and verified CI",
+        "enforcement": "active"
+      }
+    ]
+  },
+  {
+    "repository": "sauna-admin-app",
+    "url": "https://github.com/sauna-studio/sauna-admin-app",
+    "rulesets": [
+      {
+        "id": 26275680,
+        "name": "Main PR and verified CI",
+        "enforcement": "active"
+      }
+    ]
+  },
+  {
+    "repository": "sauna-admin-web",
+    "url": "https://github.com/sauna-studio/sauna-admin-web",
+    "rulesets": [
+      {
+        "id": 26275681,
+        "name": "Main PR and verified CI",
+        "enforcement": "active"
+      }
+    ]
+  },
+  {
+    "repository": "sauna-infrastructure",
+    "url": "https://github.com/sauna-studio/sauna-infrastructure",
+    "rulesets": [
+      {
+        "id": 26275683,
+        "name": "Main PR and verified CI",
+        "enforcement": "active"
+      }
+    ]
+  },
+  {
+    "repository": "sauna-automation",
+    "url": "https://github.com/sauna-studio/sauna-automation",
+    "rulesets": [
+      {
+        "id": 26275684,
+        "name": "Main PR and verified CI",
+        "enforcement": "active"
+      }
+    ]
+  },
+  {
+    "repository": "sauna-docs",
+    "url": "https://github.com/sauna-studio/sauna-docs",
+    "rulesets": [
+      {
+        "id": 26275685,
+        "name": "Main PR and verified CI",
+        "enforcement": "active"
+      }
+    ]
+  }
+]
