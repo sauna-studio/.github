@@ -3,6 +3,7 @@
 
 Reads actual Issue.projectItems (including archived items), avoiding the eventually
 consistent Project item-list index. No resources outside the validated allowlist.
+Phase/Area/Priority follow the canonical backlog; Status is user-managed progress.
 """
 import argparse
 import json
@@ -22,7 +23,9 @@ def graphql(query, variables=None):
 def snapshot(ids):
     query = '''query($ids:[ID!]!){nodes(ids:$ids){... on Issue{id url state parent{id}
       blockedBy(first:100){nodes{id} pageInfo{hasNextPage}}
-      projectItems(first:100,includeArchived:true){nodes{id isArchived project{id}} pageInfo{hasNextPage}}}}}'''
+      projectItems(first:100,includeArchived:true){nodes{id isArchived project{id}
+        status:fieldValueByName(name:"Status"){... on ProjectV2ItemFieldSingleSelectValue{optionId}}}
+        pageInfo{hasNextPage}}}}}'''
     nodes = graphql(query, {'ids': ids})['nodes']
     if any(n is None for n in nodes):
         raise ValueError('Missing issue node')
@@ -49,6 +52,54 @@ def project_item(node, pid):
     return matches[0] if matches else None
 
 
+def graph_operations(backlog, indexed, nodes):
+    """Add missing canonical edges only; never replace existing parents or edges."""
+    operations = []
+    for item in backlog:
+        current = nodes[indexed[item['key']]['node_id']]
+        if current['url'] != indexed[item['key']]['url']:
+            raise ValueError('Node ID and validated URL disagree')
+        known = {i['id'] for i in current['blockedBy']['nodes']}
+        for dependency in item['dependencies']:
+            target = indexed[dependency]['node_id']
+            if target not in known:
+                operations.append('addBlockedBy(input:{issueId:%s,blockingIssueId:%s}){clientMutationId}' % (json.dumps(current['id']), json.dumps(target)))
+        if item.get('parent'):
+            target = indexed[item['parent']]['node_id']
+            if current['parent'] and current['parent']['id'] != target:
+                raise ValueError('Refusing to replace an existing parent')
+            if not current['parent']:
+                operations.append('addSubIssue(input:{issueId:%s,subIssueId:%s}){clientMutationId}' % (json.dumps(target), json.dumps(current['id'])))
+    return operations
+
+
+def metadata_operations(backlog, indexed, nodes, pid, fields, added_item_ids):
+    """Synchronize planning fields while preserving every existing Status value."""
+    operations = []
+    for item in backlog:
+        node = nodes[indexed[item['key']]['node_id']]
+        pi = project_item(node, pid)
+        if pi is None:
+            raise ValueError('Project membership has not materialized; safely rerun')
+        if 'status' not in pi:
+            raise ValueError('Status was not read; refusing to overwrite unknown progress')
+        values = [('Phase', item['phase']), ('Area', item['area']), ('Priority', 'P1' if item['key'].startswith('MVP') else 'P0')]
+        # A non-null field value is owned by the user or a Project workflow,
+        # including custom options that are not part of the bootstrap defaults.
+        if pi['status'] is None:
+            if node['state'] == 'OPEN':
+                values.append(('Status', 'Todo'))
+            elif pi['id'] in added_item_ids:
+                values.append(('Status', 'Done'))
+            # Existing closed issues with no Status are deliberately left alone.
+        for field, value in values:
+            f = next(f for f in fields if f['name'] == field)
+            option = next(o['id'] for o in f['options'] if o['name'] == value)
+            inp = 'projectId:%s,itemId:%s,fieldId:%s,value:{singleSelectOptionId:%s}' % tuple(json.dumps(x) for x in [pid, pi['id'], f['id'], option])
+            operations.append('updateProjectV2ItemFieldValue(input:{%s}){clientMutationId}' % inp)
+    return operations
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--apply', action='store_true')
@@ -66,48 +117,23 @@ def main():
         raise ValueError('Unsafe Project provenance')
     indexed = state['issues']
     nodes = snapshot([indexed[i['key']]['node_id'] for i in backlog])
-    operations = []
-    for item in backlog:
-        current = nodes[indexed[item['key']]['node_id']]
-        if current['url'] != indexed[item['key']]['url']:
-            raise ValueError('Node ID and validated URL disagree')
-        known = {i['id'] for i in current['blockedBy']['nodes']}
-        for dependency in item['dependencies']:
-            target = indexed[dependency]['node_id']
-            if target not in known:
-                operations.append('addBlockedBy(input:{issueId:%s,blockingIssueId:%s}){clientMutationId}' % (json.dumps(current['id']), json.dumps(target)))
-        if item.get('parent'):
-            target = indexed[item['parent']]['node_id']
-            if current['parent'] and current['parent']['id'] != target:
-                raise ValueError('Refusing to replace an existing parent')
-            if not current['parent']:
-                operations.append('addSubIssue(input:{issueId:%s,subIssueId:%s}){clientMutationId}' % (json.dumps(target), json.dumps(current['id'])))
+    operations = graph_operations(backlog, indexed, nodes)
     print(f'Planning issues={len(backlog)}; missing native edges={len(operations)}', flush=True)
     if not args.apply:
         return
     execute(operations)
     pid = state['project']['id']
+    added_item_ids = set()
     # Parent auto-add workflow may already have added children. Read by issue node.
     nodes = snapshot(list(nodes))
     for item in backlog:
         node = nodes[indexed[item['key']]['node_id']]
         if project_item(node, pid) is None:
-            graphql('mutation($p:ID!,$i:ID!){addProjectV2ItemById(input:{projectId:$p,contentId:$i}){item{id}}}', {'p': pid, 'i': node['id']})
+            result = graphql('mutation($p:ID!,$i:ID!){addProjectV2ItemById(input:{projectId:$p,contentId:$i}){item{id}}}', {'p': pid, 'i': node['id']})
+            added_item_ids.add(result['addProjectV2ItemById']['item']['id'])
     nodes = snapshot(list(nodes))
     fields = p.gh('project', 'field-list', str(state['project']['number']), '--owner', p.ORG, '--format', 'json', '--limit', '100')['fields']
-    operations = []
-    for item in backlog:
-        node = nodes[indexed[item['key']]['node_id']]
-        pi = project_item(node, pid)
-        if pi is None:
-            raise ValueError('Project membership has not materialized; safely rerun')
-        values = [('Phase', item['phase']), ('Area', item['area']), ('Priority', 'P1' if item['key'].startswith('MVP') else 'P0'),
-                  ('Status', 'Done' if node['state'] == 'CLOSED' else 'In Progress' if item['key'] == 'MVP-001' else 'Todo')]
-        for field, value in values:
-            f = next(f for f in fields if f['name'] == field)
-            option = next(o['id'] for o in f['options'] if o['name'] == value)
-            inp = 'projectId:%s,itemId:%s,fieldId:%s,value:{singleSelectOptionId:%s}' % tuple(json.dumps(x) for x in [pid, pi['id'], f['id'], option])
-            operations.append('updateProjectV2ItemFieldValue(input:{%s}){clientMutationId}' % inp)
+    operations = metadata_operations(backlog, indexed, nodes, pid, fields, added_item_ids)
     execute(operations)
     actual = snapshot(list(nodes))
     for item in backlog:
