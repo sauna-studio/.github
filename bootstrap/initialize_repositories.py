@@ -188,6 +188,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
 """)
     write_new(directory / ".github/workflows/ci.yml", f"""name: Repository CI
