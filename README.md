@@ -24,6 +24,8 @@ SaunaへのログインはPasskeyのみ。社員にはGoogle Workspace組織ア�
 
 共通ファイルは自動継承されるとは限りません。`AGENTS.md`・CODEOWNERS・CI・ライセンスは各リポジトリに明示配置し、共通規則の改訂時は追従PRで更新します。Reusable Workflowはレビュー済みのコミットSHAを指定して呼び出します。
 
+SwiftUIを実装する両iOS repoには、[専用指針](policies/swiftui.md)の本文と適用元commitをAGENTSへ明示配置します。この指針は文書だけでUI動作・性能検証を完了扱いにしません。
+
 ローカル検証（Python 3.11以上を使用。macOS標準Pythonが古い場合はHomebrew等のPythonを明示指定）:
 
 ```sh
