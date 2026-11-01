@@ -36,3 +36,5 @@ actionlint
 ```
 
 これは本番デプロイや課金リソース作成を行うリポジトリではありません。GitHub上の設定・適用結果と未完了事項は作業記録に残します。
+
+- [Workflow dependency lockfiles](policies/workflow-lockfiles.md): generated coverage and provenance verification alongside existing SHA pins.
