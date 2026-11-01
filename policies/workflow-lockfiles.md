@@ -13,7 +13,7 @@ gh actions-lock --verify --no-narrow
 
 Every repository has a read-only verification workflow. Its official Linux binary is pinned to a release and independently recorded SHA256; update both only after reviewing the release. The existing `GITHUB_TOKEN` has only `contents: read`; no additional secret is required. Do not run untrusted PR code under `pull_request_target`.
 
-`--verify-local` checks offline coverage only. The networked `--verify` also checks source repository identity and pin provenance and must succeed before merge. CI does not modify or commit lockfiles. A failure is not a successful security check.
+`--verify-local` checks offline coverage only. The networked `--verify` also checks source repository identity and pin provenance and must succeed before merge. Verification is read-only for repository files; the tool may write normal user-cache logs. CI does not modify or commit lockfiles. A failure is not a successful security check.
 
 Lock all workflow definitions, including reusable definitions in `.github`. Calls at `jobs.<id>.uses` are not covered: keep those calls at full SHAs from the common repository's default-branch history. To consume locked reusable definitions, callers must reference a commit containing the defining repository's lockfile. A caller's lockfile does not lock dependencies inside an old reusable workflow commit.
 
