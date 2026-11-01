@@ -22,6 +22,10 @@ Default to an exhaustive `Hashable` route enum with stable IDs and `[Route]`; us
 
 Own routers per scene/account/profile; key private presentation caches by environment/facility too. Clear authenticated presentation on logout, revocation or identity changes; discard late results from a previous identity/scope. Keep token/CSRF handling in the existing session layer, not UI state or navigation persistence. Routes contain IDs, not credentials or full private models. Authorized display models remain allowed. Restored IDs/deep links require API authorization; UI state grants no access. Preserve redacted errors.
 
+### Actions and toolbars
+
+Define an action's purpose before its position. Prefer suitable semantic toolbar placements; reconsider competing actions before fixing physical edges. Choose `ButtonRole` to match behavior: `.close` preserves progress, `.cancel` abandons the pending operation, `.confirm` confirms, and `.destructive` identifies destructive work. Roles do not implement application save/discard logic or grant API authorization; handlers and presentation policy must implement the promised behavior. Use system role labels when appropriate and clear contextual labels when needed. Custom placement or content actions remain valid when justified. Verify unsaved-change dismissal, required destructive confirmation/undo, accessibility and compact/expanded toolbar overflow. [User reference](https://zenn.dev/zunda_pixel/articles/7ed1e0d8456e7c), [Apple ButtonRole](https://developer.apple.com/documentation/swiftui/buttonrole), [semantic placements](https://developer.apple.com/documentation/swiftui/toolbaritemplacement).
+
 ### Verification
 
 For UI changes, build/test on the target SDK and check iPhone/iPad resizing, Dynamic Type, accessibility, state lifetime and back navigation. Profile performance when needed. Document-only changes verify policy parity/links; do not claim unexecuted UI or Instruments checks.
