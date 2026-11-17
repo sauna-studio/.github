@@ -22,3 +22,8 @@ API以外から業務DBを直接更新しない。Chat/Calendarは通知や投�
 - https://github.com/hummingbird-project/hummingbird
 - https://github.com/vapor/postgres-nio
 - https://atlasgo.io/docs
+
+
+## 2026-11-17 運用更新
+
+本番デプロイ自体の都度承認は不要とするユーザー指示を反映した。既存の認証・権限・検証条件は維持し、課金リソース作成・組織権限の拡大は引き続き明示承認を要する。過去の承認方針は上記の履歴として保持する。
