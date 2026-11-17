@@ -52,3 +52,5 @@ python scripts/sync_workaround_policy.py /path/to/consumer --source-commit <full
 ```
 
 Issues無効forkは`--issues-disabled`でフォームを追加せず、利用側Issueへ追跡します。AGENTS未配置のforkに限り`--allow-new-agents`も明示します。Issue機能や他の設定は変更しません。
+
+`postgres-nio`の同期対象は維持branch `sauna-1.33.2`です。上流同期用の`main`は変更しません。`origin/sauna-1.33.2`をfetchし、その履歴を含む作業branchでhelperを実行して、PRのbaseも`sauna-1.33.2`にします。helperは`main`・維持branchへの直接適用、detached HEAD、維持履歴を含まないcheckoutを拒否します。
