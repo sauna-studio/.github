@@ -237,10 +237,10 @@ def publish(repo: str, directory: Path, sha: str, state: dict) -> None:
     run(["git", "commit", "-m", f"chore: initialize {repo} development foundation"], directory)
     commit = run(["git", "rev-parse", "HEAD"], directory)
     run(["git", "push", "--set-upstream", "origin", BRANCH], directory)
-    # Forms deliberately avoid implicit labels; baseline labels are created if missing.
+    # Issue Form labels must exist; preserve existing labels and add missing defaults.
     labels = gh("label", "list", "--repo", f"{ORG}/{repo}", "--limit", "100", "--json", "name")
     names = {label["name"] for label in labels}
-    for name, color, description in [("type:task", "1D76DB", "Implementation or foundation task"), ("type:bug", "D73A4A", "Confirmed defect with regression verification")]:
+    for name, color, description in [("type:task", "1D76DB", "Implementation or foundation task"), ("type:bug", "D73A4A", "Confirmed defect with regression verification"), ("workaround", "C5DEF5", "Temporary workaround with removal criteria")]:
         if name not in names:
             run(["gh", "label", "create", name, "--repo", f"{ORG}/{repo}", "--color", color, "--description", description])
     body = f"""## 変更内容

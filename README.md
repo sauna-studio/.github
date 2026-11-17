@@ -40,3 +40,15 @@ actionlint
 - [Workflow dependency lockfiles](policies/workflow-lockfiles.md): generated coverage and provenance verification alongside existing SHA pins.
 
 共通Swift workflowは独立したlint jobで`swift format lint -r -p -s .`を実行し、リポジトリ全体のSwift書式違反をエラーにします。build/testと同じdigest固定のSwift toolchainを使用します。呼出先への適用には、この変更を含むdefault branchのcommit SHAへ更新する追従PRが必要です。
+
+
+Workaroundを導入するPRは、merge前に`workaround`ラベル付きの追跡Issueへ紐付けます。専用フォームは問題・回避方法・取り外す条件を短く残すための3欄です。通常の設計変更は対象にしません。
+
+共通規則の追従には、merge済みsource SHAを指定して同期します（既定は差分表示、`--write`で反映、`--check`で一致検証）。既存の固有指針と他フォームは保持します。
+
+```sh
+python scripts/sync_workaround_policy.py /path/to/consumer --source-commit <full-merged-SHA> --write
+python scripts/sync_workaround_policy.py /path/to/consumer --source-commit <full-merged-SHA> --check
+```
+
+Issues無効forkは`--issues-disabled`でフォームを追加せず、利用側Issueへ追跡します。AGENTS未配置のforkに限り`--allow-new-agents`も明示します。Issue機能や他の設定は変更しません。
