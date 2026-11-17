@@ -252,7 +252,7 @@
       "body": "Swift、SvelteKit、Terraform、OpenAPI の checks と Releases・Environments 運用を定義する。\n\nエージェント・検証条件: 実装時は Coding Agent と独立した Review Agent を必ず並行起動し、実ビルド・テストを実行する。\n\n計画ID: G08\n対応精度: 追加GitHub基盤Gxxの具体化。元個別題名の一致は未確認。",
       "acceptance": [
         "再利用 workflow を immutable SHA で呼び出し、必要最小限の権限で実行する。",
-        "実装のある repo は build/test を実行し、本番 deploy と有料リソース作成は別途明示承認を必要とする。"
+        "実装のある repo は build/test を実行し、本番 deploy の都度承認は不要、有料リソース作成には別途明示承認を必要とする。"
       ],
       "dependencies": [
         "FOUND-002"

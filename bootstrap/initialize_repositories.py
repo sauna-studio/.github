@@ -48,7 +48,7 @@ SCOPES = {
     "sauna-infrastructure": (
         "Terraform / Google Cloud Run / Cloud SQL PostgreSQL 18 / OpenTelemetry / Dockerの基盤コード。",
         "業務データの正本はSauna APIとPostgreSQL。認証情報をTerraform state・plan・ログ・リポジトリに公開しない。",
-        "実装後はterraform fmt -check -recursive / init -backend=false / validateを実行する。apply・本番デプロイ・課金リソース・広いIAM付与は明示承認まで実行しない。",
+        "実装後はterraform fmt -check -recursive / init -backend=false / validateを実行する。apply・課金リソース・広いIAM付与は明示承認まで実行しない。本番デプロイ自体は都度確認を求めない。",
     ),
     "sauna-automation": (
         "Google Chat Bot、Google Workspace API連携、AIエージェント向けsauna-mcp。",

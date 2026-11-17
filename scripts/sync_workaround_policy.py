@@ -74,8 +74,7 @@ def safe_path(root: Path, relative: Path) -> Path:
     return path
 
 
-def updates(source: Path, target: Path, sha: str, *, issues_disabled: bool = False,
-            allow_new_agents: bool = False) -> dict[Path, tuple[bytes | None, bytes]]:
+def validate_target(target: Path) -> str:
     if target.is_symlink() or Path(git(target, 'rev-parse', '--show-toplevel').strip()).resolve() != target.resolve():
         raise ValueError('Target must be the checkout root, not a symlink or subdirectory')
     target_repo = github_repo(target)
@@ -95,6 +94,12 @@ def updates(source: Path, target: Path, sha: str, *, issues_disabled: bool = Fal
             raise ValueError('Fetch origin/main and origin/sauna-1.33.2 and use a maintenance-based checkout') from error
         if main_only & head_only:
             raise ValueError('PostgresNIO policy checkout must not contain main-only commits')
+    return target_repo
+
+
+def updates(source: Path, target: Path, sha: str, *, issues_disabled: bool = False,
+            allow_new_agents: bool = False) -> dict[Path, tuple[bytes | None, bytes]]:
+    validate_target(target)
     rule, form = source_files(source, sha)
     agents = safe_path(target, Path('AGENTS.md'))
     if agents.exists():
