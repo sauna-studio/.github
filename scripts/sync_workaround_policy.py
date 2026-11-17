@@ -78,8 +78,23 @@ def updates(source: Path, target: Path, sha: str, *, issues_disabled: bool = Fal
             allow_new_agents: bool = False) -> dict[Path, tuple[bytes | None, bytes]]:
     if target.is_symlink() or Path(git(target, 'rev-parse', '--show-toplevel').strip()).resolve() != target.resolve():
         raise ValueError('Target must be the checkout root, not a symlink or subdirectory')
-    if github_repo(target) not in {f'sauna-studio/{name}' for name in CONSUMERS}:
+    target_repo = github_repo(target)
+    if target_repo not in {f'sauna-studio/{name}' for name in CONSUMERS}:
         raise ValueError('Target is not an approved Sauna consumer repository')
+    if target_repo == 'sauna-studio/postgres-nio':
+        branch = git(target, 'branch', '--show-current').strip()
+        if not branch or branch in {'main', 'sauna-1.33.2'}:
+            raise ValueError('Use a feature branch based on origin/sauna-1.33.2 for postgres-nio')
+        try:
+            maintenance = 'refs/remotes/origin/sauna-1.33.2'
+            git(target, 'merge-base', '--is-ancestor', maintenance, 'HEAD')
+            # Merging maintenance must not disguise a branch carrying main-only history.
+            main_only = set(git(target, 'rev-list', 'refs/remotes/origin/main', '--not', maintenance).splitlines())
+            head_only = set(git(target, 'rev-list', 'HEAD', '--not', maintenance).splitlines())
+        except ValueError as error:
+            raise ValueError('Fetch origin/main and origin/sauna-1.33.2 and use a maintenance-based checkout') from error
+        if main_only & head_only:
+            raise ValueError('PostgresNIO policy checkout must not contain main-only commits')
     rule, form = source_files(source, sha)
     agents = safe_path(target, Path('AGENTS.md'))
     if agents.exists():
