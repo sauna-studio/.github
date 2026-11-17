@@ -32,7 +32,7 @@ def validate(root: Path) -> list[str]:
         "README.md", "profile/README.md", "AGENTS.md", "CONTRIBUTING.md", "SECURITY.md",
         ".github/CODEOWNERS", ".github/pull_request_template.md", ".github/dependabot.yml",
         ".github/ISSUE_TEMPLATE/config.yml", ".github/ISSUE_TEMPLATE/feature.yml",
-        ".github/ISSUE_TEMPLATE/bug.yml", ".codex/config.toml",
+        ".github/ISSUE_TEMPLATE/bug.yml", ".github/ISSUE_TEMPLATE/workaround.yml", ".codex/config.toml",
     ]
     for filename in required:
         p = root / filename
@@ -69,6 +69,10 @@ def validate(root: Path) -> list[str]:
             ids = [field.get("id") for field in fields]
             require(all(ids) and len(ids) == len(set(ids)), f"Missing/duplicate form IDs: {p.name}")
             require("acceptance" in ids and "dependencies" in ids, f"Missing acceptance/dependencies: {p.name}")
+            if p.name == "workaround.yml":
+                require(data.get("labels") == ["workaround"], "Workaround form must apply the workaround label")
+                require(set(ids) == {"problem", "dependencies", "acceptance"}, "Workaround form must keep the three tracking fields")
+                require(all(field.get("type") == "textarea" and field.get("validations", {}).get("required") in (True, "true") for field in fields), "Workaround tracking fields must be required textareas")
 
     for p in sorted((root / ".codex").rglob("*.toml")):
         try:
