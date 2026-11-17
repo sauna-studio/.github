@@ -86,9 +86,15 @@ def updates(source: Path, target: Path, sha: str, *, issues_disabled: bool = Fal
         if not branch or branch in {'main', 'sauna-1.33.2'}:
             raise ValueError('Use a feature branch based on origin/sauna-1.33.2 for postgres-nio')
         try:
-            git(target, 'merge-base', '--is-ancestor', 'refs/remotes/origin/sauna-1.33.2', 'HEAD')
+            maintenance = 'refs/remotes/origin/sauna-1.33.2'
+            git(target, 'merge-base', '--is-ancestor', maintenance, 'HEAD')
+            # Merging maintenance must not disguise a branch carrying main-only history.
+            main_only = set(git(target, 'rev-list', 'refs/remotes/origin/main', '--not', maintenance).splitlines())
+            head_only = set(git(target, 'rev-list', 'HEAD', '--not', maintenance).splitlines())
         except ValueError as error:
-            raise ValueError('PostgresNIO target must include the fetched origin/sauna-1.33.2 history') from error
+            raise ValueError('Fetch origin/main and origin/sauna-1.33.2 and use a maintenance-based checkout') from error
+        if main_only & head_only:
+            raise ValueError('PostgresNIO policy checkout must not contain main-only commits')
     rule, form = source_files(source, sha)
     agents = safe_path(target, Path('AGENTS.md'))
     if agents.exists():

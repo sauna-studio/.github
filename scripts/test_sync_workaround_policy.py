@@ -142,6 +142,7 @@ class SyncWorkaroundPolicyTests(unittest.TestCase):
     def test_issues_disabled_fork_can_get_explicit_minimal_instructions_only(self):
         self.target = self.repository('fork', 'postgres-nio')
         base = self.commit(self.target)
+        self.run_git(self.target, 'update-ref', 'refs/remotes/origin/main', base)
         self.run_git(self.target, 'update-ref', 'refs/remotes/origin/sauna-1.33.2', base)
         self.run_git(self.target, 'checkout', '-qb', 'codex/fork-policy')
         with self.assertRaises(ValueError):
@@ -160,6 +161,7 @@ class SyncWorkaroundPolicyTests(unittest.TestCase):
     def test_postgres_main_is_not_a_rollout_checkout(self):
         self.run_git(self.target, 'remote', 'set-url', 'origin', 'https://github.com/sauna-studio/postgres-nio.git')
         base = self.run_git(self.target, 'rev-parse', 'HEAD')
+        self.run_git(self.target, 'update-ref', 'refs/remotes/origin/main', base)
         self.run_git(self.target, 'update-ref', 'refs/remotes/origin/sauna-1.33.2', base)
         with self.assertRaises(ValueError):
             self.apply(write=True, issues_disabled=True)
@@ -167,6 +169,8 @@ class SyncWorkaroundPolicyTests(unittest.TestCase):
 
     def test_postgres_feature_requires_the_maintenance_history(self):
         self.run_git(self.target, 'remote', 'set-url', 'origin', 'https://github.com/sauna-studio/postgres-nio.git')
+        base = self.run_git(self.target, 'rev-parse', 'HEAD')
+        self.run_git(self.target, 'update-ref', 'refs/remotes/origin/main', base)
         self.run_git(self.target, 'checkout', '-qb', 'sauna-1.33.2')
         (self.target / 'README.md').write_text('maintenance branch\n')
         maintenance = self.commit(self.target)
@@ -185,6 +189,22 @@ class SyncWorkaroundPolicyTests(unittest.TestCase):
         self.commit(self.target)
         self.assertTrue(self.apply(write=True, issues_disabled=True))
         self.assertFalse(self.apply(write=True, issues_disabled=True))
+
+    def test_postgres_merged_main_history_is_not_a_policy_rollout(self):
+        self.run_git(self.target, 'remote', 'set-url', 'origin', 'https://github.com/sauna-studio/postgres-nio.git')
+        base = self.run_git(self.target, 'rev-parse', 'HEAD')
+        (self.target / 'README.md').write_text('main-only change\n')
+        upstream = self.commit(self.target)
+        self.run_git(self.target, 'update-ref', 'refs/remotes/origin/main', upstream)
+        self.run_git(self.target, 'checkout', '-qb', 'sauna-1.33.2', base)
+        (self.target / 'maintenance.txt').write_text('maintenance-only change\n')
+        maintenance = self.commit(self.target)
+        self.run_git(self.target, 'update-ref', 'refs/remotes/origin/sauna-1.33.2', maintenance)
+        self.run_git(self.target, 'checkout', '-qb', 'codex/mixed-history', 'main')
+        self.run_git(self.target, 'merge', '-q', '--no-ff', '-m', 'fixture merge', 'sauna-1.33.2')
+        with self.assertRaises(ValueError):
+            self.apply(write=True, issues_disabled=True)
+        self.assertEqual((self.target / 'AGENTS.md').read_bytes(), self.original.encode())
 
     def test_tracking_section_at_eof_ends_with_one_newline(self):
         prefix = b'# Consumer\r\n\r\n'
