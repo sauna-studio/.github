@@ -38,3 +38,5 @@ actionlint
 これは本番デプロイや課金リソース作成を行うリポジトリではありません。GitHub上の設定・適用結果と未完了事項は作業記録に残します。
 
 - [Workflow dependency lockfiles](policies/workflow-lockfiles.md): generated coverage and provenance verification alongside existing SHA pins.
+
+共通Swift workflowは独立したlint jobで`swift format lint -r -p -s .`を実行し、リポジトリ全体のSwift書式違反をエラーにします。build/testと同じdigest固定のSwift toolchainを使用します。呼出先への適用には、この変更を含むdefault branchのcommit SHAへ更新する追従PRが必要です。
