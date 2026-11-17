@@ -86,13 +86,14 @@ def updates(source: Path, target: Path, sha: str, *, issues_disabled: bool = Fal
         original_bytes = agents.read_bytes()
         original = original_bytes.decode('utf-8')
         start, end = section(original)
-        desired = (original[:start] + rule + original[end:]).encode('utf-8')
+        replacement = rule.rstrip('\r\n') + '\n' if end == len(original) else rule
+        desired = (original[:start] + replacement + original[end:]).encode('utf-8')
     elif allow_new_agents:
         original_bytes = None
         if not issues_disabled or github_repo(target) not in {'sauna-studio/postgres-nio', 'sauna-studio/SwiftCBOR'}:
             raise ValueError('New fork instructions require an approved Issues-disabled fork')
         desired = ('# Sauna Studio fork instructions\n\n'
-                   '上流の構成・ライセンス・検証手順を保持する。\n\n' + rule).encode('utf-8')
+                   '上流の構成・ライセンス・検証手順を保持する。\n\n' + rule.rstrip('\r\n') + '\n').encode('utf-8')
     else:
         raise ValueError('Missing AGENTS.md; new fork instructions require --allow-new-agents')
     desired_files = {agents: (original_bytes, desired)}

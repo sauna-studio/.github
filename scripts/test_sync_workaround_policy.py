@@ -150,6 +150,24 @@ class SyncWorkaroundPolicyTests(unittest.TestCase):
         self.assertIn('New rule', (self.target / 'AGENTS.md').read_text())
         self.assertFalse((self.target / sync.FORM).exists())
         self.assertFalse(self.apply(write=True, issues_disabled=True, allow_new_agents=True))
+        self.run_git(self.target, 'add', 'AGENTS.md')
+        checked = subprocess.run(['git', '-C', str(self.target), 'diff', '--cached', '--check'], capture_output=True)
+        self.assertEqual(checked.returncode, 0, checked.stdout.decode())
+        self.assertFalse(self.apply(write=True, issues_disabled=True, allow_new_agents=True))
+
+    def test_tracking_section_at_eof_ends_with_one_newline(self):
+        prefix = b'# Consumer\r\n\r\n'
+        (self.target / 'AGENTS.md').write_bytes(prefix + sync.HEADING.encode() + b'\r\n\r\nOld rule.\r\n\r\n')
+        self.commit(self.target)
+        self.assertTrue(self.apply(write=True))
+        actual = (self.target / 'AGENTS.md').read_bytes()
+        self.assertTrue(actual.startswith(prefix))
+        self.assertTrue(actual.endswith(b'\n'))
+        self.assertFalse(actual.endswith(b'\n\n'))
+        self.run_git(self.target, 'add', 'AGENTS.md', sync.FORM.as_posix())
+        checked = subprocess.run(['git', '-C', str(self.target), 'diff', '--cached', '--check'], capture_output=True)
+        self.assertEqual(checked.returncode, 0, checked.stdout.decode())
+        self.assertFalse(self.apply(write=True))
 
     def test_unknown_or_duplicate_sections_are_not_guessed(self):
         for text in ['# Custom rules\n', self.original + '\n' + self.original]:
