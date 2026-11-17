@@ -94,6 +94,18 @@ class SyncDeployPolicyTests(unittest.TestCase):
         self.assertEqual((self.target / 'AGENTS.md').read_bytes(), self.original_agents.encode())
         self.assertEqual((self.target / sync.CODING).read_text(), coding)
 
+    def test_sparse_infrastructure_readme_cannot_leave_stale_policy_unchecked(self):
+        self.git(self.target, 'remote', 'set-url', 'origin', 'https://github.com/sauna-studio/sauna-infrastructure.git')
+        agents = self.original_agents + '\r\n## Infra rules\r\n' + sync.OLD_INFRA + '\r\n'
+        (self.target / 'AGENTS.md').write_bytes(agents.encode())
+        self.commit(self.target)
+        self.git(self.target, 'sparse-checkout', 'set', '--no-cone', '/AGENTS.md', '/.codex/agents/coding.toml')
+        self.assertFalse((self.target / 'README.md').exists())
+        with self.assertRaises(ValueError):
+            self.apply(write=True)
+        self.assertEqual((self.target / 'AGENTS.md').read_bytes(), agents.encode())
+        self.assertEqual((self.target / sync.CODING).read_bytes(), self.original_coding.encode())
+
     def test_new_merged_source_updates_one_provenance_marker(self):
         self.apply(write=True)
         self.commit(self.target)

@@ -102,6 +102,8 @@ def updates(source: Path, target: Path, sha: str) -> dict[Path, tuple[bytes, byt
         raise ValueError('Existing coding agent instructions are required')
     if repo == 'sauna-studio/sauna-infrastructure':
         readme = common.safe_path(target, Path('README.md'))
+        if not readme.exists() and common.git(target, 'ls-tree', 'HEAD', '--', 'README.md').strip():
+            raise ValueError('Include the tracked infrastructure README in sparse checkouts')
         if readme.exists():
             before = readme.read_bytes()
             desired[readme] = (before, replace_known(before.decode('utf-8'), OLD_INFRA, NEW_INFRA, 'infrastructure README approval').encode('utf-8'))
